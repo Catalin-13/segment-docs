@@ -1,5 +1,5 @@
 ---
-title: [integration_name] Source
+title: Prestashop by Xcommerce Source
 ---
 
 > (delete after reading) Include a 1-2 sentence introduction to your company and the value it provides to customers - updating the name and hyperlink. Please leave the utm string unchanged.
@@ -11,6 +11,13 @@ This is an [Event Cloud Source](/docs/sources/#event-cloud-sources) which can no
 > (delete after reading) Update your company name and support email address.
 
 This source is maintained by <integration_name>. For any issues with the source, [contact their Support team](mailto:support@<integration_name>.com).
+
+## Installation
+
+1. Get the Xcommerce Segment Integration from Shopware Market. 
+  After the purchase, you will get a .zip file
+2. Go to Prestashop Admin Panel -> Improve -> 
+
 
 ## Getting started
 
@@ -44,30 +51,30 @@ The table below lists events that <integration_name> sends to Segment. These eve
 
 ### Device-mode events (client side)
 
-| Event Name                      | Description                                                 |
-|---------------------------------|-------------------------------------------------------------|
-| Product List Viewed             | User has viewed a product collection                        |
-| Product Clicked                 | User has clicked on a product from the collection           | 
-| Product Viewed                  | User has viewed the product detail page                     | 
-| Product Shared                  | User has shared a product                                   | 
-| Product Image Clicked           | User has clicked a product image                            | 
-| Products Searched               | User has searched for products                              | 
-| Registration Viewed             | User has viewed the registration form                       | 
-| Thankyou Page Viewed            | User had viewed the thank you page                          | 
-| Product Added                   | User added a product to their shopping cart                 | 
-| Product Removed                 | User removed a product from their shopping cart             | 
-| Cart Viewed                     | User viewed their shopping cart                             | 
-| Checkout Started                | User initiated the order process (a transaction is created) | 
-| Checkout Step Viewed            | User viewed a checkout step                                 |
-| Checkout Step Completed         | User completed a checkout step                              |
-| Payment Info Entered            | User added payment information                              |
-| Order Completed                 | User completed the order                                    |
-| Order Canceled                  | User canceled the order                                     |
-| Order Refunded                  | User refunded for the order                                 |
-| Coupon Applied                  | Coupon was applied on a user’s shopping cart or order       |
-| Product Added to Wishlist       | User added a product to their wishlist                      |
-| Product removed from whishlist  | User removed a product from their wishlist                  |
-| Wishlist Product Added to Cart  | User added product to cart from wishlist                           |
+| Event Name                     | Description                                                 |
+|--------------------------------|-------------------------------------------------------------|
+| Product List Viewed            | User has viewed a product collection                        |
+| Product Clicked                | User has clicked on a product from the collection           | 
+| Product Viewed                 | User has viewed the product detail page                     | 
+| Product Shared                 | User has shared a product                                   | 
+| Product Image Clicked          | User has clicked a product image                            | 
+| Products Searched              | User has searched for products                              | 
+| Registration Viewed            | User has viewed the registration form                       | 
+| Thankyou Page Viewed           | User had viewed the thank you page                          | 
+| Product Added                  | User added a product to their shopping cart                 | 
+| Product Removed                | User removed a product from their shopping cart             | 
+| Cart Viewed                    | User viewed their shopping cart                             | 
+| Checkout Started               | User initiated the order process (a transaction is created) | 
+| Checkout Step Viewed           | User viewed a checkout step                                 |
+| Checkout Step Completed        | User completed a checkout step                              |
+| Payment Info Entered           | User added payment information                              |
+| Order Completed                | User completed the order                                    |
+| Order Canceled                 | User canceled the order                                     |
+| Order Refunded                 | User refunded for the order                                 |
+| Coupon Applied                 | Coupon was applied on a user’s shopping cart or order       |
+| Product Added to Wishlist      | User added a product to their wishlist                      |
+| Product removed from wishlist  | User removed a product from their wishlist                  |
+| Wishlist Product Added to Cart | User added product to cart from wishlist                    |
 
  
 ##Identify calls
@@ -77,7 +84,7 @@ For every event where there is an identifiable customer (from both the device-mo
 The following traits are included with an Identify call:
 
 | Property Name              | Description                                                            | Property Type |
-| -------------------------- | ---------------------------------------------------------------------- | ------------- |
+|----------------------------|------------------------------------------------------------------------|---------------|
 | userId                     | The chosen user identifier. This defaults to the Shopify Customer ID.  | Double        |
 | createdAt                  | The date the customer record was created.                              | Date          |
 | customerLifetimeValue      | The total spend of the customer on the Shopify store.                  | Double        |
@@ -89,36 +96,95 @@ The following traits are included with an Identify call:
 ### Cloud-mode events (server side)
 
 | Event Name         | Description                           |
-| ------------------ | ------------------------------------- |
+|--------------------|---------------------------------------|
 | Email Sent         | Email was sent successfully           |
-| Email Opened       | Prospect opened the email             | 
-| Link Clicked       | Prospect clicked the tracking link    | 
-| Email Replied      | Prospect replied to email sent        | 
-| Email Bounced      | Email servers rejected the email      | 
-| Email Unsubscribed | Prospect clicked the unsubscribe link | 
+| Email Opened       | Prospect opened the email             |
+| Link Clicked       | Prospect clicked the tracking link    |
+| Email Replied      | Prospect replied to email sent        |
+| Email Bounced      | Email servers rejected the email      |
+| Email Unsubscribed | Prospect clicked the unsubscribe link |
 
 ## Event Properties
 
 The table below list the properties included in the events listed above.
 
-| Property Name                | Description                                             |
-|------------------------------|---------------------------------------------------------|
-| `userId`                     | The user's ID                                           |
-| `default_address.street`     | The customer's default street address                   |
-| `default_address.city`       | The customer's city address                             |
-| `default_address.postalCode` | The customer's ZIP / post code                          |
-| `default_address.state`      | The customer's state address                            |
-| `default_adress.country`     | The customer's country                                  |
-| `email`                      | The user's email address                                |
-| `createdAt`                  | *The total spend of customer on the Shopify store ????* |
-| `customerLifetimeValue`      | The user's payment tier                                 |
-| `userId`                     | Email event type                                        |
-| `userId`                     | Email event type                                        |
-| `userId`                     | Email event type                                        |
-| `userId`                     | Email event type                                        |
-| `userId`                     | Email event type                                        |
-| `userId`                     | Email event type                                        |
-| `userId`                     | Email event type                                        |
+| Property Name                      | Description                                                       |
+|------------------------------------|-------------------------------------------------------------------|
+| `brand`                            | The brand of the product                                          |
+| `cancel_reason`                    | The reason for canceling the order                                |
+| `cart_id`                          | The ID of the Prestashop cart                                     |
+| `category`                         | Event category (defaults to Prestashop(Xcommerce))                |
+| `checkout_id`                      | The ID of the checkout session                                    |
+| `compare_at_price`                 | The product price before any discount                             |
+| `coupon`                           | Coupon code associated with the product                           |
+| `coupon_id`                        | ID of the coupon                                                  |
+| `currency`                         | Currency code associated with the transaction                     |
+| `discount`                         | The discounted amount                                             |
+| `email`                            | Prestashop email address, or email submitted on a storefront form |
+| `fbc`                              | Facebook Campaign identifier                                      |
+| `fbp`                              | Facebook Pixel identifier                                         |
+| `image_url`                        | The URL of the first product image                                |
+| `lifetime_revenue_xcommerce `      | User lifetime value                                               |
+| `list_id`                          | Product list being viewed                                         |
+| `name`                             | The product name                                                  |
+| `order_id`                         | The ID of the order                                               |
+| `payment_gateway_xcommerce`        | The payment gateway used by the customer                          |
+| `payment_method`                   | The payment method chosen for checkout                            |
+| `position`                         | The product position in the collection                            |
+| `presentment_amount`               | The product price as displayed to the user                        |
+| `presentment_currency`             | The currency displayed to the user                                |
+| `presentment_total`                | Presentment total                                                 |
+| `prestashop_customer_id_xcommerce` | Prestashops's identifier for the customer                         |
+| `prestashop_product_id`            | Prestashop Product ID                                             |
+| `prestashop_variant_id`            | Prestashop Product Variant ID                                     |
+| `price`                            | The product price at the time of the event, in the store currency |
+| `product_id`                       | The Prestashop Product ID                                         |
+| `product_properties`               | Custom properties of purchased products                           |
+| `products`                         | Products displayed in the product list                            |
+| `products.$.brand`                 | The brand of the product                                          |
+| `products.$.category`              | The category of the product (defaults to all)                     |
+| `products.$.compare_at_price`      | The product price before any discount                             |
+| `products.$.coupon`                | Coupon code associated with the product                           |
+| `products.$.currency`              | The currency displayed to the user                                |
+| `products.$.image_url`             | The URL of the first product image                                |
+| `products.$.name`                  | The product name                                                  |
+| `products.$.position`              | The product position in the collection                            |
+| `products.$.presentment_amount`    | The product price as displayed to the user                        |
+| `products.$.presentment_currency`  | The currency displayed to the user                                |
+| `products.$.prestashop_product_id` | The Prestashop Product ID                                         |
+| `products.$.prestashop_variant_id` | The Prestashop Product Variant ID                                 |
+| `products.$.price`                 | The product price at the time of the event, in the store currency |
+| `products.$.product_id`            | The Prestashop Product ID                                         |
+| `products.$.quantity`              | The quantity of products                                          |
+| `products.$.sku`                   | The product SKU                                                   |
+| `products.$.tags`                  | The product tags                                                  |
+| `products.$.url`                   | The URL of the product page                                       |
+| `products.$.variant`               | The product variant name                                          |
+| `purchase_count_xcommerce`         | Total purchase count for the customer                             |
+| `quantity`                         | The quantity of products                                          |
+| `query`                            | Query the user searched with                                      |
+| `refund_reason`                    | The reason for the refund                                         |
+| `results`                          | Number of products matching the search                            |
+| `revenue`                          | Revenue ($) associated with the transaction                       |
+| `sent_from`                        | Xcommerce source identifier                                       |
+| `share_via`                        | Method of sharing                                                 |
+| `shipping`                         | The shipping cost                                                 |
+| `shipping_method`                  | The shipping method chosen for checkout                           |
+| `sku`                              | The product SKU                                                   |
+| `source_name`                      | The source of the order or checkout (e.g. web, android, pos)      |
+| `step`                             | The checkout step number                                          |
+| `subtotal`                         | Order total after discounts but before taxes and shipping         |
+| `tags`                             | The product tags                                                  |
+| `tax`                              | The amount of tax on the order                                    |
+| `total`                            | Revenue with discounts and coupons added                          |
+| `url`                              | The URL of the product page                                       |
+| `url`                              | The URL for the current checkout step                             |
+| `userConsent.analytics`            | User accepted or not analytics tracking                           |
+| `userConsent.preferences`          | User has preferences for tracking                                 |
+| `userConsent.sale_of_data`         | User has preferences for tracking                                 |
+| `userId`                           | Prestashop customer ID                                            |
+| `variant`                          | The product variant name                                          |
+| `wishlist_id`                      | Prestashop wishlist ID                                            |
 
 
 ## Adding Destinations
