@@ -4,7 +4,7 @@ title: Prestashop by Xcommerce Source
 
 > (delete after reading) Include a 1-2 sentence introduction to your company and the value it provides to customers - updating the name and hyperlink. Please leave the utm string unchanged.
 
-[<integration_name>](https://yourintegration.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners){:target="_blank”} provides self-serve predictive analytics for growth marketers, leveraging machine learning to automate audience insights and recommendations.
+[<Segment Tracking>](https://yourintegration.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners){:target="_blank”} provides self-serve predictive analytics for growth marketers, leveraging machine learning to automate audience insights and recommendations.
 
 This is an [Event Cloud Source](/docs/sources/#event-cloud-sources) which can not only export data into your Segment warehouse, but can also federate the exported data into your other enabled Segment Destinations.
 
@@ -16,7 +16,31 @@ This source is maintained by <integration_name>. For any issues with the source,
 
 1. Get the Xcommerce Segment Integration from Shopware Market. 
   After the purchase, you will get a .zip file
-2. Go to Prestashop Admin Panel -> Improve -> 
+2. Go to Prestashop Admin Panel -> Improve -> Module Manager
+3. Click "Upload a module" and select the .zip file for the upload
+
+## Configuration
+
+1. To configure the module go to Prestashop Admin Panel -> Improve -> Module Manager
+2. Browse for the Segment Tracking module and select Configure option for the module
+3. On the configuration page you will see a number of Tabs corresponding to various settings. Start with the las tab (Settings)
+4. Settings tab:
+
+   - Select if the Module is active and sends data to Segment
+   - Client API key (from Segment)
+   - Client API host
+   - Client Sent From (designate a label you want to be included in the events sent for Client Side)
+   - Server to Server API
+   - Servet API host
+   - Server Sent From (designate a label you want to be included in the events sent for Server Side)
+   - Event Category (designate the default event category name)
+   - Track Page View 
+
+5. CustomerSettings tab:
+
+   - Customer Id value (select the value type you want to be used for the Customer Id)
+   
+6. The rest of the tabs can be used to enable or disable the Events tracked by Segment Tracking. There are 4 tabs, one for each Event Category: Track Products, Track Checkout, Track Order and Track Customer. Use these tabs to select which event you want Segment Tracking to track
 
 
 ## Getting started
