@@ -1,5 +1,5 @@
 ---
-title: Prestashop by Xcommerce Source
+title: Prestashop - Segment Tracking by Xcommerce Source
 ---
 
 > (delete after reading) Include a 1-2 sentence introduction to your company and the value it provides to customers - updating the name and hyperlink. Please leave the utm string unchanged.
@@ -10,7 +10,7 @@ This is an [Event Cloud Source](/docs/sources/#event-cloud-sources) which can no
 
 > (delete after reading) Update your company name and support email address.
 
-This source is maintained by <integration_name>. For any issues with the source, [contact their Support team](mailto:support@<integration_name>.com).
+This source is maintained by Prestashop - Segment Tracking by Xcommerce. For any issues with the source, [contact their Support team](mailto:support@<integration_name>.com).
 
 ## Installation
 
@@ -22,10 +22,12 @@ This source is maintained by <integration_name>. For any issues with the source,
 ## Configuration
 
 1. To configure the module go to Prestashop Admin Panel -> Improve -> Module Manager
-2. Browse for the Segment Tracking module and select Configure option for the module
-3. On the configuration page you will see a number of Tabs corresponding to various settings. Start with the las tab (Settings)
-4. Settings tab:
 
+2. Browse for the Segment Tracking module and select Configure option for the module
+
+3. On the configuration page you will see a number of Tabs corresponding to various settings. Start with the las tab (Settings)
+
+4. Settings tab:
    - Select if the Module is active and sends data to Segment
    - Client API key (from Segment)
    - Client API host
@@ -38,8 +40,19 @@ This source is maintained by <integration_name>. For any issues with the source,
 
 5. CustomerSettings tab:
 
-   - Customer Id value (select the value type you want to be used for the Customer Id)
-   
+    Here you will find two settings: "Customer traits included in:" and "Customer Id value"
+
+   - Customer traits included in:
+     - Identity - in the trait location ***(needs more details)***
+     - Track context traits: in the context.traits location ***(needs more details)***
+     - Track context properties: in the properties location ***(needs more details)***
+     
+   - Customer ID value
+     - Default user id - use the Prestashop user ID as the Customer ID value
+     - Custom user id - you can specify a certain field from the Database ***(cum traducem asta?? "se trimite un camp custom pe care il poti alege tu din baza de date, singura cerinta e sa aiba camp de legatura tabela respectiva cu id_customer ca sa-l poti lega, cand selectezi o sa vezi campurile de selectie tabela/camp")***
+     - Email dash - use the emai dash of the customer as the Customer ID value
+     - Not use user id - use an anonymous ID as the Customer ID value
+     
 6. The rest of the tabs can be used to enable or disable the Events tracked by Segment Tracking. There are 4 tabs, one for each Event Category: Track Products, Track Checkout, Track Order and Track Customer. Use these tabs to select which event you want Segment Tracking to track
 
 
@@ -48,20 +61,20 @@ This source is maintained by <integration_name>. For any issues with the source,
 > (delete after reading) Include clear, succinct steps including hyperlinks to where customers can locate the place in your app to enter their Segment writekey.
 
 *1. From your workspace's [Sources catalog page](https://app.segment.com/goto-my-workspace/sources/catalog){:target="_blank”} click **Add Source**.*
-*2. Search for "<integration_name>" in the Sources Catalog, select <integration_name>, and click **Add Source**.*
+*2. Search for "Prestashop - Segment Tracking by Xcommerce" in the Sources Catalog, select Prestashop - Segment Tracking by Xcommerce, and click **Add Source**.*
 *3. On the next screen, give the Source a name configure any other settings.*
 
 *- The name is used as a label in the Segment app, and Segment creates a related schema name in your warehouse. The name can be anything, but we recommend using something that reflects the source itself and distinguishes amongst your environments (eg. SourceName_Prod, SourceName_Staging, SourceName_Dev).*
 
 *4. Click **Add Source** to save your settings.*
 *5. Copy the Write key from the Segment UI.*
-*6. Log in to your <integration_name> account - navigate to Settings > Integrations > Segment Integration and paste the key to connect.*
+*6. Log in to your Prestashop - Segment Tracking by Xcommerce account - navigate to Settings > Integrations > Segment Integration and paste the key to connect.*
 
 ## Stream
 
 > (delete after reading) Clarify the type of Segment events your integration will send. 
 
-<integration_name> uses our stream Source component to send Segment event data. It uses a server-side (select from `track`, `identify`, `page`, `group`) method(s) to send data to Segment. These events are then available in any destination that accepts server-side events, and available in a schema in your data warehouse, so you can query using SQL.
+Prestashop - Segment Tracking by Xcommerce uses our stream Source component to send Segment event data. It uses a server-side (select from `track`, `identify`, `page`, `group`) method(s) to send data to Segment. These events are then available in any destination that accepts server-side events, and available in a schema in your data warehouse, so you can query using SQL.
 
 > (delete after reading) Clarify how your integration includes user identifiers in your event payloads, the example below is from Klaviyo:
 
@@ -71,9 +84,11 @@ The default behavior is for Klaviyo to pass the userId associated with the email
 
 ## Events
 
-The table below lists events that <integration_name> sends to Segment. These events appear as tables in your warehouse, and as regular events in other Destinations. <integration_name> includes the `userId` if available.
+The table below lists events that Prestashop - Segment Tracking by Xcommerce sends to Segment. These events appear as tables in your warehouse, and as regular events in other Destinations. Prestashop - Segment Tracking by Xcommerce includes the `userId` if available.
 
 ### Device-mode events (client side)
+
+Device-mode handles events triggered directly by the user. This kind of information is usually not stored in the database, things like page views, button clicks or mouse movements.
 
 | Event Name                     | Description                                                 |
 |--------------------------------|-------------------------------------------------------------|
@@ -101,7 +116,7 @@ The table below lists events that <integration_name> sends to Segment. These eve
 | Wishlist Product Added to Cart | User added product to cart from wishlist                    |
 
  
-##Identify calls
+##Identify calls - To be discussed!
 
 For every event where there is an identifiable customer (from both the device-mode and cloud-mode) Xcommerce Segment Integration also sends an Identify call. This happens when the customer logs into the storefront, on the last step of the checkout, with the order, and also after purchase with any customer update in Admin Panel.
 
@@ -119,6 +134,8 @@ The following traits are included with an Identify call:
 
 ### Cloud-mode events (server side)
 
+Cloud-mode handles events that have data stored or calculated in the Database. These events send data that is not necessarily available to the User in the browser. This method can capture information that would otherwise be inaccessible due to add block, for example.
+
 | Event Name         | Description                           |
 |--------------------|---------------------------------------|
 | Email Sent         | Email was sent successfully           |
@@ -131,6 +148,73 @@ The following traits are included with an Identify call:
 ## Event Properties
 
 The table below list the properties included in the events listed above.
+
+### Product Properties
+
+| Property Name                      | Description                                                       |
+|------------------------------------|-------------------------------------------------------------------|
+| `brand`                            | The brand of the product                                          |
+| `compare_at_price`                 | The product price before any discount                             |
+| `name`                             | The product name                                                  |
+| `category`                         | The category of the product                                       |
+| `currency`                         | Currency code associated with the transaction                     |
+| `image_url`                        | The URL of the first product image                                |
+| `position`                         | The product position in the collection                            |
+| `price`                            | The product price at the time of the event, in the store currency |
+| `product_id`                       | The Prestashop Product ID                                         |
+| `prestashop_product_id`            | Prestashop Product ID                                             |
+| `prestashop_variant_id`            | Prestashop Product Variant ID                                     |
+| `sku`                              | The product SKU                                                   |
+| `tags`                             | The product tags                                                  |
+| `variant`                          | The product variant name                                          |
+| `presentment_amount`               | The product price as displayed to the user                        |
+| `presentment_currency`             | The currency displayed to the user                                |
+| `product_properties`               | Custom properties of purchased products                           |
+| `products`                         | Products displayed in the product list                            |
+| `quantity`                         | The quantity of products                                          |
+| `url`                              | The URL of the product page                                       |
+
+### Order Properties
+ 
+| Property Name                      | Description                                                       |
+|------------------------------------|-------------------------------------------------------------------|
+| `cancel_reason`                    | The reason for canceling the order                                |
+| `cart_id`                          | The ID of the Prestashop cart                                     |
+| `checkout_id`                      | The ID of the checkout session                                    |
+| `coupon`                           | Coupon code associated with the product                           |
+| `coupon_id`                        | ID of the coupon                                                  |
+| `discount`                         | The discounted amount                                             |
+| `order_id`                         | The ID of the order                                               |
+| `payment_gateway_xcommerce`        | The payment gateway used by the customer                          |
+| `payment_method`                   | The payment method chosen for checkout                            |
+| `presentment_amount`               | The product price as displayed to the user                        |
+| `presentment_currency`             | The currency displayed to the user                                |
+| `presentment_total`                | Presentment total                                                 |
+| `quantity`                         | The quantity of products                                          |
+| `refund_reason`                    | The reason for the refund                                         |
+| `revenue`                          | Revenue ($) associated with the transaction                       |
+| `shipping`                         | The shipping cost                                                 |
+| `shipping_method`                  | The shipping method chosen for checkout                           |
+| `source_name`                      | The source of the order or checkout (e.g. web, android, pos)      |
+| `step`                             | The checkout step number                                          |
+| `subtotal`                         | Order total after discounts but before taxes and shipping         |
+| `tax`                              | The amount of tax on the order                                    |
+| `total`                            | Revenue with discounts and coupons added                          |
+| `url`                              | The URL for the current checkout step                             |
+
+### Customer Properties
+ 
+| Property Name                      | Description                                                       |
+|------------------------------------|-------------------------------------------------------------------|
+| `email`                            | Prestashop email address, or email submitted on a storefront form |
+| `lifetime_revenue_xcommerce `      | User lifetime value                                               |
+| `prestashop_customer_id_xcommerce` | Prestashops's identifier for the customer                         |
+| `userConsent.analytics`            | User accepted or not analytics tracking                           |
+| `userConsent.preferences`          | User has preferences for tracking                                 |
+| `userConsent.sale_of_data`         | User has preferences for tracking                                 |
+| `userId`                           | Prestashop customer ID                                            |
+
+### All Properties - ***To be discussed!***
 
 | Property Name                      | Description                                                       |
 |------------------------------------|-------------------------------------------------------------------|
@@ -217,6 +301,6 @@ Now that your Source is set up, you can connect it with Destinations.
 
 Log into your downstream tools and check to see that your events appear as expected, and that they contain all of the properties you expect. If your events and properties don’t appear, check the [Event Delivery](/docs/connections/event-delivery/) tool, and refer to the Destination docs for each tool for troubleshooting.
 
-If there are any issues with how the events are arriving to Segment, [contact the <integration_name> support team](mailto:support@<integration_name>.com).
+If there are any issues with how the events are arriving to Segment, [contact the Prestashop - Segment Tracking by Xcommerce support team](mailto:support@<integration_name>.com).
 
 > (delete after reading) Congratulations! 🎉 You’ve finished the documentation for your Segment integration. If there’s any additional information or nuance which did not fit in the above template and that you want to share with our mutual customers, feel free to include these as a separate section for us to review. If not, you may now submit this doc to our team.
