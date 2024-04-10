@@ -28,15 +28,15 @@ This source is maintained by Prestashop - Segment Tracking by Xcommerce. For any
 3. On the configuration page you will see a number of Tabs corresponding to various settings. Start with the las tab (Settings)
 
 4. Settings tab:
-   - Select if the Module is active and sends data to Segment
-   - Client API key (from Segment)
-   - Client API host
-   - Client Sent From (designate a label you want to be included in the events sent for Client Side)
-   - Server to Server API
-   - Servet API host
-   - Server Sent From (designate a label you want to be included in the events sent for Server Side)
-   - Event Category (designate the default event category name)
-   - Track Page View 
+   - Active - Select if the Module is active and sends data to Segment
+   - Client API key - API key for the designated Segment Source
+   - Client API Host - Only needed if the host is not in the US ***More details may be needed, but could not find any in the Segment documentation (https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/custom-proxy/ https://segment.com/docs/connections/sources/catalog/libraries/server/http-api/)***
+   - Client Sent From - Designate a label you want to be included in the events sent for Client Side
+   - Server to Server API key - You can use the API key of the Source used for Client Side, or you can create a separate Segment source and use the API key for the second source
+   - Server API host - Only needed if the host is not in the US ***More details may be needed, but could not find any in the Segment documentation (https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/custom-proxy/ https://segment.com/docs/connections/sources/catalog/libraries/server/http-api/)***
+   - Server Sent From - Designate a label you want to be included in the events sent for Server Side
+   - Event Category - Designate the default event category name. This will be visible in all Events (Client side and Server side)
+   - Track Page View - You can select if you want to track all the viewed pages. This will send an event o every page load.
 
 5. CustomerSettings tab:
 
@@ -49,36 +49,34 @@ This source is maintained by Prestashop - Segment Tracking by Xcommerce. For any
      
    - Customer ID value
      - Default user id - use the Prestashop user ID as the Customer ID value
-     - Custom user id - you can specify a certain field from the Database ***(cum traducem asta?? "se trimite un camp custom pe care il poti alege tu din baza de date, singura cerinta e sa aiba camp de legatura tabela respectiva cu id_customer ca sa-l poti lega, cand selectezi o sa vezi campurile de selectie tabela/camp")***
+     - Custom user id - you can specify a certain field from the Database ***(Presta User ID should be mentioned in the separate table if a different table than ps_customer is used)***
      - Email dash - use the emai dash of the customer as the Customer ID value
      - Not use user id - use an anonymous ID as the Customer ID value
      
 6. The rest of the tabs can be used to enable or disable the Events tracked by Segment Tracking. There are 4 tabs, one for each Event Category: Track Products, Track Checkout, Track Order and Track Customer. Use these tabs to select which event you want Segment Tracking to track
 
 
-## Getting started
+## Getting started (***Maybe moved above instalation***)
 
 > (delete after reading) Include clear, succinct steps including hyperlinks to where customers can locate the place in your app to enter their Segment writekey.
 
-*1. From your workspace's [Sources catalog page](https://app.segment.com/goto-my-workspace/sources/catalog){:target="_blank”} click **Add Source**.*
-*2. Search for "Prestashop - Segment Tracking by Xcommerce" in the Sources Catalog, select Prestashop - Segment Tracking by Xcommerce, and click **Add Source**.*
-*3. On the next screen, give the Source a name configure any other settings.*
-
-*- The name is used as a label in the Segment app, and Segment creates a related schema name in your warehouse. The name can be anything, but we recommend using something that reflects the source itself and distinguishes amongst your environments (eg. SourceName_Prod, SourceName_Staging, SourceName_Dev).*
-
-*4. Click **Add Source** to save your settings.*
-*5. Copy the Write key from the Segment UI.*
-*6. Log in to your Prestashop - Segment Tracking by Xcommerce account - navigate to Settings > Integrations > Segment Integration and paste the key to connect.*
+1. From your workspace's [Sources catalog page](https://app.segment.com/goto-my-workspace/sources/catalog){:target="_blank”} click ***Add Source***.
+2. Search for "Prestashop - Segment Tracking by Xcommerce" in the Sources Catalog, select Prestashop - Segment Tracking by Xcommerce, and click ***Add Source***.
+3. On the next screen, give the Source a name configure any other settings.
+   - The name is used as a label in the Segment app, and Segment creates a related schema name in your warehouse. The name can be anything, but we recommend using something that reflects the source itself and distinguishes amongst your environments (eg. SourceName_Prod, SourceName_Staging, SourceName_Dev).
+4. Click ***Add Source*** to save your settings.
+5. Copy the Write key from the Segment UI.
+6. Log in to your Prestashop Admin Panel, go to "Prestashop - Segment Tracking by Xcommerce" Module Settings, and paste the API Key in the Settings tab (as described in the Configuration section) ***To check phrasing***
 
 ## Stream
 
 > (delete after reading) Clarify the type of Segment events your integration will send. 
 
-Prestashop - Segment Tracking by Xcommerce uses our stream Source component to send Segment event data. It uses a server-side (select from `track`, `identify`, `page`, `group`) method(s) to send data to Segment. These events are then available in any destination that accepts server-side events, and available in a schema in your data warehouse, so you can query using SQL.
+Prestashop - Segment Tracking by Xcommerce uses our stream Source component to send Segment event data. It uses a server-side (select from `track`, `identify`, `page`, `group`) ***We need to clarify and mention which methods are used for Server Side*** method(s) to send data to Segment. These events are then available in any destination that accepts server-side events, and available in a schema in your data warehouse, so you can query using SQL.
 
 > (delete after reading) Clarify how your integration includes user identifiers in your event payloads, the example below is from Klaviyo:
 
-The default behavior is for Klaviyo to pass the userId associated with the email recipient as the userId. There are cases in which Klaviyo does not have an associated userId, in which case the email address will be passed in as the anonymousId.
+The default behavior is for Klaviyo (***Klaviyo is a data analytics driven marketing platform https://www.klaviyo.com/about It seems that this is an informative note of how Klaviyo is expecting data***) to pass the userId associated with the email recipient as the userId. There are cases in which Klaviyo does not have an associated userId, in which case the email address will be passed in as the anonymousId.
 
 > (delete after reading) For each of the below sections, populate the event and properties that a customer would expect to receive in their downstream tools from your Event Source.
 
