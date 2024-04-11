@@ -24,20 +24,21 @@ This source is maintained by Prestashop - Segment Tracking by Xcommerce. For any
 1. To configure the module go to Prestashop Admin Panel -> Improve -> Module Manager
 2. Browse for the Segment Tracking module and select Configure option for the module
 ![Navigate to Module manager.](Images/GoToConfigure.png)
-3. On the configuration page you will see a number of Tabs corresponding to various settings. Start with the las tab (Settings)
-   1. Settings tab:
-   ![Settings tab.](Images/SettingsTab.png)
-      - Active - Select if the Module is active and sends data to Segment
-      - Client API key - API key for the designated Segment Source
-      - Client API Host - Only needed if the host is not in the US ***More details may be needed, but could not find any in the Segment documentation (https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/custom-proxy/ https://segment.com/docs/connections/sources/catalog/libraries/server/http-api/)***
-      - Client Sent From - Designate a label you want to be included in the events sent for Client Side
-      - Server to Server API key - You can use the API key of the Source used for Client Side, or you can create a separate Segment source and use the API key for the second source
-      - Server API host - Only needed if the host is not in the US ***More details may be needed, but could not find any in the Segment documentation (https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/custom-proxy/ https://segment.com/docs/connections/sources/catalog/libraries/server/http-api/)***
-      - Server Sent From - Designate a label you want to be included in the events sent for Server Side
-      - Event Category - Designate the default event category name. This will be visible in all Events (Client side and Server side)
-      - Track Page View - You can select if you want to track all the viewed pages. This will send an event o every page load.
-   >   [!NOTE] Note: Make sure to click Save after you are satisfied with the configurations.
-4. CustomerSettings tab:
+   1. On the configuration page you will see a number of Tabs corresponding to various settings. Start with the las tab (Settings)
+      1. Settings tab:
+      ![Settings tab.](Images/SettingsTab.png)
+         - Active - Select if the Module is active and sends data to Segment
+         - Client API key - API key for the designated Segment Source
+         - Client API Host - Only needed if the host is not in the US ***More details may be needed, but could not find any in the Segment documentation (https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/custom-proxy/ https://segment.com/docs/connections/sources/catalog/libraries/server/http-api/)***
+         - Client Sent From - Designate a label you want to be included in the events sent for Client Side
+         - Server to Server API key - You can use the API key of the Source used for Client Side, or you can create a separate Segment source and use the API key for the second source
+         - Server API host - Only needed if the host is not in the US ***More details may be needed, but could not find any in the Segment documentation (https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/custom-proxy/ https://segment.com/docs/connections/sources/catalog/libraries/server/http-api/)***
+         - Server Sent From - Designate a label you want to be included in the events sent for Server Side
+         - Event Category - Designate the default event category name. This will be visible in all Events (Client side and Server side)
+         - Track Page View - You can select if you want to track all the viewed pages. This will send an event o every page load.
+      > [!NOTE] 
+      > Make sure to click Save after you are satisfied with the configurations.
+3. CustomerSettings tab:
 ![Customer Setting tab.](Images/CustomerSettingsTab.png)
     Here you will find two settings: "Customer traits included in:" and "Customer Id value"
 
@@ -53,7 +54,7 @@ This source is maintained by Prestashop - Segment Tracking by Xcommerce. For any
      - Not use user id - use an anonymous ID as the Customer ID value
    - Make sure to click Save after you are satisfied with the configurations.
      
-5. The rest of the tabs can be used to enable or disable the Events tracked by Segment Tracking. There are 4 tabs, one for each Event Category: Track Products, Track Checkout, Track Order and Track Customer. Use these tabs to select which event you want Segment Tracking to track
+4. The rest of the tabs can be used to enable or disable the Events tracked by Segment Tracking. There are 4 tabs, one for each Event Category: Track Products, Track Checkout, Track Order and Track Customer. Use these tabs to select which event you want Segment Tracking to track
 
 
 ## Getting started (***Maybe moved above instalation***)
