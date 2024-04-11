@@ -39,8 +39,8 @@ This source is maintained by Prestashop - Segment Tracking by Xcommerce. For any
    - Server Sent From - Designate a label you want to be included in the events sent for Server Side
    - Event Category - Designate the default event category name. This will be visible in all Events (Client side and Server side)
    - Track Page View - You can select if you want to track all the viewed pages. This will send an event o every page load.
-         
-   > **Note**: Make sure to click Save after you are satisfied with the configurations.
+   
+    > **Note**: Make sure to click Save after you are satisfied with the configurations.
 4. CustomerSettings tab:
 
     ![Customer Setting tab.](Images/CustomerSettingsTab.png)
