@@ -26,8 +26,7 @@ This source is maintained by Prestashop - Segment Tracking by Xcommerce. For any
 
     ![Navigate to Module manager.](Images/GoToConfigure.png)
 
-   > **Note**
-   > On the configuration page you will see a number of Tabs corresponding to various settings. Start with the las tab (Settings)
+   > **Note**: On the configuration page you will see a number of Tabs corresponding to various settings. Start with the las tab (Settings)
 3. Settings tab:
 
     ![Settings tab.](Images/SettingsTab.png)
@@ -41,7 +40,7 @@ This source is maintained by Prestashop - Segment Tracking by Xcommerce. For any
    - Event Category - Designate the default event category name. This will be visible in all Events (Client side and Server side)
    - Track Page View - You can select if you want to track all the viewed pages. This will send an event o every page load.
          
-   > [!IMPORANT] Make sure to click Save after you are satisfied with the configurations.
+   > **Note**: Make sure to click Save after you are satisfied with the configurations.
 4. CustomerSettings tab:
 
     ![Customer Setting tab.](Images/CustomerSettingsTab.png)
