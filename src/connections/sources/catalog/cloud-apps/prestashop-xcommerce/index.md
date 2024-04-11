@@ -27,8 +27,7 @@ This source is maintained by Prestashop - Segment Tracking by Xcommerce. For any
     ![Navigate to Module manager.](Images/GoToConfigure.png)
 
    > **Note**
-   > On the configuration page you will see a number of Tabs corresponding to various settings. Start with the las tab (Settings) [!NOTE]
-
+   > On the configuration page you will see a number of Tabs corresponding to various settings. Start with the las tab (Settings)
 3. Settings tab:
 
     ![Settings tab.](Images/SettingsTab.png)
