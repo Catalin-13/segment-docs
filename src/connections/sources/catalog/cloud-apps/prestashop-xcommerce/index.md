@@ -27,38 +27,50 @@ This source is maintained by Prestashop - Segment Tracking by Xcommerce. For any
     ![Navigate to Module manager.](Images/GoToConfigure.png)
 
    > **Note**: On the configuration page you will see a number of Tabs corresponding to various settings. Start with the las tab (Settings)
+
 3. Settings tab:
 
     ![Settings tab.](Images/SettingsTab.png)
+    This is the page where you will select the general connection and labeling options.
    - Active - Select if the Module is active and sends data to Segment
-   - Client API key - API key for the designated Segment Source
-   - Client API Host - Only needed if the host is not in the US ***More details may be needed, but could not find any in the Segment documentation (https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/custom-proxy/ https://segment.com/docs/connections/sources/catalog/libraries/server/http-api/)***
-   - Client Sent From - Designate a label you want to be included in the events sent for Client Side
-   - Server to Server API key - You can use the API key of the Source used for Client Side, or you can create a separate Segment source and use the API key for the second source
-   - Server API host - Only needed if the host is not in the US ***More details may be needed, but could not find any in the Segment documentation (https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/custom-proxy/ https://segment.com/docs/connections/sources/catalog/libraries/server/http-api/)***
-   - Server Sent From - Designate a label you want to be included in the events sent for Server Side
-   - Event Category - Designate the default event category name. This will be visible in all Events (Client side and Server side)
-   - Track Page View - You can select if you want to track all the viewed pages. This will send an event o every page load.
+   - API Key - API key for the designated Segment Source
+   - API Host - Only needed if the host is not in the US ***More details may be needed, but could not find any in the Segment documentation (https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/custom-proxy/ https://segment.com/docs/connections/sources/catalog/libraries/server/http-api/)***
+   - Storefront Action Label - Designate a label you want to be included in the events triggered by actions performed in Storefront
+   - Backoffice Action Label - Designate a label you want to be included in the events triggered by actions performed in Backoffice
+   - Event Category - Designate the default event category name. This will be visible in all Events
+   - Page View - You can select if you want to track all the viewed pages. This will send an event o every page load.
    
     > **Note**: Make sure to click Save after you are satisfied with the configurations.
-4. CustomerSettings tab:
+   
+4. Consent Settings Tab:
+
+    ![Customer Setting tab.](Images/ConsentSettingsTab.png)
+    On this page you can select if and how to track Customer Consent Settings
+   - Customer Consent Update - Select if the consent update will be tracked or not
+   - Consent Service - Select one of two options: CookieBoot or Custom
+   - Track Script - Enter the js script for the Consent Service
+   
+    > **Note**: Make sure to click Save after you are satisfied with the configurations.
+
+5. Customer Settings tab:
 
     ![Customer Setting tab.](Images/CustomerSettingsTab.png)
     Here you will find two settings: "Customer traits included in:" and "Customer Id value"
 
    - Customer traits included in:
-     - Identity - in the trait location ***(needs more details)***
-     - Track context traits: in the context.traits location ***(needs more details)***
-     - Track context properties: in the properties location ***(needs more details)***
+     - Identify - This option will trigger a separate identify event along with the Customer Login, Customer Register, Consent Updated and Customer Updated events. This Event will contain the Customer specific properties. 
+     - Track context traits - No Identify event will be triggered. Instead, the Customer specific properties will be included in all the Events. The properties will pe present in the "context" array.
+     - Track context properties - No Identify event will be triggered. Instead, the Customer specific properties will be included in all the Events. The properties will pe present in the "properties" array.
      
    - Customer ID value
-     - Default user id - use the Prestashop user ID as the Customer ID value
-     - Custom user id - you can specify a certain field from the Database ***(Presta User ID should be mentioned in the separate table if a different table than ps_customer is used)***
-     - Email dash - use the emai dash of the customer as the Customer ID value
-     - Not use user id - use an anonymous ID as the Customer ID value
-   - Make sure to click Save after you are satisfied with the configurations.
+     - Default user id - Use the Prestashop user ID as the Customer ID value
+     - Custom user id - You can specify a certain field from the Database ***(id_customer needs to be mentioned in the used table if a different table than ps_customer is used)***
+     - Email dash - Use the email hash of the customer as the Customer ID value. You can also add a Prefix and a Suffix to the email hash.
+     - Do not use user id - Use an anonymous ID as the Customer ID value
+
+    > **Note**: Make sure to click Save after you are satisfied with the configurations.
      
-5. The rest of the tabs can be used to enable or disable the Events tracked by Segment Tracking. There are 4 tabs, one for each Event Category: Track Products, Track Checkout, Track Order and Track Customer. Use these tabs to select which event you want Segment Tracking to track
+6. The rest of the tabs can be used to enable or disable the Events tracked by Segment Tracking. There are 4 tabs, one for each category of events: Track Products, Track Checkout, Track Order and Track Customer. Use these tabs to select which event you want Segment Tracking to track.
 
 
 ## Getting started (***Maybe moved above instalation***)
@@ -88,38 +100,8 @@ The default behavior is for Klaviyo (***Klaviyo is a data analytics driven marke
 ## Events
 
 The table below lists events that Prestashop - Segment Tracking by Xcommerce sends to Segment. These events appear as tables in your warehouse, and as regular events in other Destinations. Prestashop - Segment Tracking by Xcommerce includes the `userId` if available.
-
-### Device-mode events (client side)
-
-Device-mode handles events triggered directly by the user. This kind of information is usually not stored in the database, things like page views, button clicks or mouse movements.
-
-| Event Name                     | Description                                                 |
-|--------------------------------|-------------------------------------------------------------|
-| Product List Viewed            | User has viewed a product collection                        |
-| Product Clicked                | User has clicked on a product from the collection           | 
-| Product Viewed                 | User has viewed the product detail page                     | 
-| Product Shared                 | User has shared a product                                   | 
-| Product Image Clicked          | User has clicked a product image                            | 
-| Products Searched              | User has searched for products                              | 
-| Registration Viewed            | User has viewed the registration form                       | 
-| Thankyou Page Viewed           | User had viewed the thank you page                          | 
-| Product Added                  | User added a product to their shopping cart                 | 
-| Product Removed                | User removed a product from their shopping cart             | 
-| Cart Viewed                    | User viewed their shopping cart                             | 
-| Checkout Started               | User initiated the order process (a transaction is created) | 
-| Checkout Step Viewed           | User viewed a checkout step                                 |
-| Checkout Step Completed        | User completed a checkout step                              |
-| Payment Info Entered           | User added payment information                              |
-| Order Completed                | User completed the order                                    |
-| Order Canceled                 | User canceled the order                                     |
-| Order Refunded                 | User refunded for the order                                 |
-| Coupon Applied                 | Coupon was applied on a user’s shopping cart or order       |
-| Product Added to Wishlist      | User added a product to their wishlist                      |
-| Product removed from wishlist  | User removed a product from their wishlist                  |
-| Wishlist Product Added to Cart | User added product to cart from wishlist                    |
-
  
-##Identify calls - To be discussed!
+###Identify calls - To be discussed!
 
 For every event where there is an identifiable customer (from both the device-mode and cloud-mode) Xcommerce Segment Integration also sends an Identify call. This happens when the customer logs into the storefront, on the last step of the checkout, with the order, and also after purchase with any customer update in Admin Panel.
 
@@ -139,14 +121,32 @@ The following traits are included with an Identify call:
 
 Cloud-mode handles events that have data stored or calculated in the Database. These events send data that is not necessarily available to the User in the browser. This method can capture information that would otherwise be inaccessible due to add block, for example.
 
-| Event Name         | Description                           |
-|--------------------|---------------------------------------|
-| Email Sent         | Email was sent successfully           |
-| Email Opened       | Prospect opened the email             |
-| Link Clicked       | Prospect clicked the tracking link    |
-| Email Replied      | Prospect replied to email sent        |
-| Email Bounced      | Email servers rejected the email      |
-| Email Unsubscribed | Prospect clicked the unsubscribe link |
+| Event Name                    | Description                                                                                          | ***Triggers????*** |
+|-------------------------------|------------------------------------------------------------------------------------------------------|--------------------|
+| Customer Consent Update       | Follows updates to the User Consent                                                                  |                    |
+| Customer Register             | Follows the submission of the Customer Register form                                                 |                    |
+| Customer Created              | Follows the successful creation of a customer in Backoffice                                          |                    |
+| Customer Login                | Follows the successful Customer Login events                                                         |                    |
+| Customer Logout               | Follows the successful Customer Logout events                                                        |                    |
+| Customer Updated              | Follows updates to a Customer Account                                                                |                    |
+| Product Viewed                | Follows the successful loading of Product Detail Pages                                               |                    |
+| Product Quick Viewed          | Follows the viewing of Product Quick View pop-up                                                     |                    |
+| Product List Viewed           | Follows the displaying of Product Lists                                                              |                    |
+| Product List Filtered         | Follows the applying of Filters on Product Lists                                                     |                    |
+| Product Searched              | Follows the loading of Product Searches Results pages                                                |                    |
+| Product Searched Autocomplete | Follows the population of Search Autocomplete lists                                                  |                    |
+| Product Added                 | Follows the successful adding of products to cart                                                    |                    |
+| Product Quantity Updated      | Follows the product quantity updated on Cart Page                                                    |                    |
+| Product Removed               | Follows the removal of products from Cart page                                                       |                    |
+| Cart Viewed                   | Follows the successful loading of the Cart Page                                                      |                    |
+| Checkout Started              | Follows the successful loading of the first Checkout Step ***to be clarified***                      |                    |
+| Checkout Step Viewed          | Follows the successful loading of subsequent Checkout Steps                                          |                    |
+| Thank You Page Viewed         | Follows the successful loading of Thank You Pages after placing an order                             |                    |
+| Order Completed               | Follows the successful placing of an Order (from Storefront or Backoffice)                           |                    |
+| Order Cancelled               | Follows the successful changing of the Order Status to "Canceled" from Backoffice                    |                    |
+| Order Refunded                | Follows the successful changing of the Order Status to "Refunded" from Backoffice                    |                    |
+| Order Updated                 | Follows the successful update of the Order from Backoffice (status changes or order details changes) |                    |
+
 
 ## Event Properties
 
@@ -154,58 +154,58 @@ The table below list the properties included in the events listed above.
 
 ### Product Properties
 
-| Property Name                      | Description                                                       |
-|------------------------------------|-------------------------------------------------------------------|
-| `brand`                            | The brand of the product                                          |
-| `compare_at_price`                 | The product price before any discount                             |
-| `name`                             | The product name                                                  |
-| `category`                         | The category of the product                                       |
-| `currency`                         | Currency code associated with the transaction                     |
-| `image_url`                        | The URL of the first product image                                |
-| `position`                         | The product position in the collection                            |
-| `price`                            | The product price at the time of the event, in the store currency |
-| `product_id`                       | The Prestashop Product ID                                         |
-| `prestashop_product_id`            | Prestashop Product ID                                             |
-| `prestashop_variant_id`            | Prestashop Product Variant ID                                     |
-| `sku`                              | The product SKU                                                   |
-| `tags`                             | The product tags                                                  |
-| `variant`                          | The product variant name                                          |
-| `presentment_amount`               | The product price as displayed to the user                        |
-| `presentment_currency`             | The currency displayed to the user                                |
-| `product_properties`               | Custom properties of purchased products                           |
-| `products`                         | Products displayed in the product list                            |
-| `quantity`                         | The quantity of products                                          |
-| `url`                              | The URL of the product page                                       |
+| Property Name                      | Description                                                       | Property Type |
+|------------------------------------|-------------------------------------------------------------------|---------------|
+| `brand`                            | The brand of the product                                          | String        |
+| `compare_at_price`                 | The product price before any discount                             | Number        |
+| `category`                         | The category of the product                                       | String        |
+| `currency`                         | Currency code associated with the transaction                     | String        |
+| `image_url`                        | The URL of the first product image                                | String        |
+| `name`                             | The product name                                                  | String        |
+| `position`                         | The product position in the collection                            | Integer       |
+| `presentment_amount`               | The product price as displayed to the user                        | Number        |
+| `presentment_currency`             | The currency displayed to the user                                | String        |
+| `prestashop_product_id`            | Prestashop Product ID                                             | String        |
+| `prestashop_variant_id`            | Prestashop Product Variant ID                                     | String        |
+| `price`                            | The product price at the time of the event, in the store currency | Number        |
+| `product_id`                       | The Prestashop Product ID                                         | String        |
+| `products`                         | Products displayed in the product list                            | Array         |
+| `quantity`                         | The quantity of products                                          | Integer       |
+| `sku`                              | The product SKU                                                   | String        |
+| `tags`                             | The product tags                                                  | String        |
+| `url`                              | The URL of the product page                                       | String        |
+| `variant`                          | The product variant name                                          | String        |
+
 
 ### Order Properties
- 
-| Property Name                      | Description                                                       |
-|------------------------------------|-------------------------------------------------------------------|
-| `cancel_reason`                    | The reason for canceling the order                                |
-| `cart_id`                          | The ID of the Prestashop cart                                     |
-| `checkout_id`                      | The ID of the checkout session                                    |
-| `coupon`                           | Coupon code associated with the product                           |
-| `coupon_id`                        | ID of the coupon                                                  |
-| `discount`                         | The discounted amount                                             |
-| `order_id`                         | The ID of the order                                               |
-| `payment_gateway_xcommerce`        | The payment gateway used by the customer                          |
-| `payment_method`                   | The payment method chosen for checkout                            |
-| `presentment_amount`               | The product price as displayed to the user                        |
-| `presentment_currency`             | The currency displayed to the user                                |
-| `presentment_total`                | Presentment total                                                 |
-| `quantity`                         | The quantity of products                                          |
-| `refund_reason`                    | The reason for the refund                                         |
-| `revenue`                          | Revenue ($) associated with the transaction                       |
-| `shipping`                         | The shipping cost                                                 |
-| `shipping_method`                  | The shipping method chosen for checkout                           |
-| `source_name`                      | The source of the order or checkout (e.g. web, android, pos)      |
-| `step`                             | The checkout step number                                          |
-| `subtotal`                         | Order total after discounts but before taxes and shipping         |
-| `tax`                              | The amount of tax on the order                                    |
-| `total`                            | Revenue with discounts and coupons added                          |
-| `url`                              | The URL for the current checkout step                             |
 
-### Customer Properties
+***Questions***
+1. Only mention Order Completed properties or Checkout specific properties and product specific? 
+ 
+| Property Name                | Description                                                           | Property Type |
+|------------------------------|-----------------------------------------------------------------------|---------------|
+| `cart_id`                    | The ID of the Prestashop cart                                         | String        | 
+| `coupon`                     | Coupon id and name associated with the product ***or transaction??*** | String        |
+| `currency`                   | Currency code associated with the transaction                         | String        |
+| `discount`                   | The discounted amount                                                 | Number        | 
+| `lifetime_revenue_xcommerce` | User lifetime revenue                                                 | Number        |
+| `event_category`             | The category of the events, as set in Backoffice                      | String        |       
+| `order_id`                   | The ID of the order                                                   | String        |      
+| `payment_gateway_xcommerce`  | The payment gateway used by the customer                              | String        |     
+| `presentment_amount`         | The product price as displayed to the user                            | Number        |    
+| `presentment_currency`       | The currency displayed to the user                                    | String        |   
+| `purchase_count_xcommerce`   | Total purchase count for the customer                                 | Integer       |  
+| `revenue`                    | Revenue ($) associated with the transaction                           | Number        |      
+| `shipping`                   | The shipping cost                                                     | Number        |      
+| `shipping_gateway_xcommerce` | The shipping method chosen for checkout                               | String        |     
+| `source_name`                | The source of the order or checkout (e.g. web, android, pos)          | String        |    
+| `source`                     | The reason of the trigger                                             | String        |   
+| `step`                       | The checkout step number                                              | Integer       |  
+| `subtotal`                   | Order total after discounts but before taxes and shipping             | Number        | 
+| `tax`                        | The amount of tax on the order                                        | Number        |       
+| `total`                      | Revenue with discounts and coupons added                              | Number        |      
+
+### Customer Properties ***TO DO***
  
 | Property Name                      | Description                                                       |
 |------------------------------------|-------------------------------------------------------------------|
@@ -298,7 +298,7 @@ The table below list the properties included in the events listed above.
 | `wishlist_id`                      | Prestashop wishlist ID                                            |
 
 
-## Adding Destinations
+## Adding Destinations ***TO DO***
 
 Now that your Source is set up, you can connect it with Destinations.
 
