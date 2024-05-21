@@ -9,12 +9,25 @@ This is an [Event Cloud Source](/docs/sources/#event-cloud-sources) which can no
 
 This source is maintained by Prestashop to Segment Tracking by Xcommerce. For any issues with the source, [contact their Support team](mailto:info@xcommerce.eu).
 
+
+## Getting started
+
+1. From your workspace's [Sources catalog page](https://app.segment.com/goto-my-workspace/sources/catalog){:target="_blank”} click ***Add Source***.
+2. Search for "Prestashop (by Xcommerce)" in the Sources Catalog, select "Prestashop (by Xcommerce)", and click ***Add Source***.
+3. On the next screen, give the Source a name configure any other settings.
+   - The name is used as a label in the Segment app, and Segment creates a related schema name in your warehouse. The name can be anything, but we recommend using something that reflects the source itself and distinguishes amongst your environments (eg. SourceName_Prod, SourceName_Staging, SourceName_Dev).
+4. Click ***Add Source*** to save your settings.
+5. Copy the Write key from the Segment UI.
+6. Log in to your Prestashop Admin Panel, go to "Prestashop (by Xcommerce)" Module Settings, and paste the API Key in the Settings tab (as described in the Configuration section) ***To check phrasing***
+
+
 ## Installation
 
 1. Get the Xcommerce Segment Integration from Shopware Market. 
   After the purchase, you will get a .zip file
 2. Go to Prestashop Admin Panel -> Improve -> Module Manager
 3. Click "Upload a module" and select the .zip file for the upload
+
 
 ## Configuration
 
@@ -70,17 +83,6 @@ This source is maintained by Prestashop to Segment Tracking by Xcommerce. For an
 6. The rest of the tabs can be used to enable or disable the Events tracked by Segment Tracking. There are 4 tabs, one for each category of events: Track Products, Track Checkout, Track Order and Track Customer. Use these tabs to select which event you want Segment Tracking to track.
 
 
-## Getting started (***Maybe moved above instalation***)
-
-
-1. From your workspace's [Sources catalog page](https://app.segment.com/goto-my-workspace/sources/catalog){:target="_blank”} click ***Add Source***.
-2. Search for "Prestashop (by Xcommerce)" in the Sources Catalog, select "Prestashop (by Xcommerce)", and click ***Add Source***.
-3. On the next screen, give the Source a name configure any other settings.
-   - The name is used as a label in the Segment app, and Segment creates a related schema name in your warehouse. The name can be anything, but we recommend using something that reflects the source itself and distinguishes amongst your environments (eg. SourceName_Prod, SourceName_Staging, SourceName_Dev).
-4. Click ***Add Source*** to save your settings.
-5. Copy the Write key from the Segment UI.
-6. Log in to your Prestashop Admin Panel, go to "Prestashop (by Xcommerce)" Module Settings, and paste the API Key in the Settings tab (as described in the Configuration section) ***To check phrasing***
-
 ## Stream
 
 
@@ -94,7 +96,7 @@ The default behavior is for Klaviyo (***Klaviyo is a data analytics driven marke
 
 The table below lists events that Prestashop - Segment Tracking by Xcommerce sends to Segment. These events appear as tables in your warehouse, and as regular events in other Destinations. Prestashop - Segment Tracking by Xcommerce includes the `userId` if available.
  
-###Identify calls - To be discussed!
+### Identify calls
 
 For every event where there is an identifiable customer (from both the device-mode and cloud-mode) Xcommerce Segment Integration also sends an Identify call. This happens when the customer logs into the storefront, on the last step of the checkout, with the order, and also after purchase with any customer update in Admin Panel.
 
@@ -171,7 +173,6 @@ The table below list the properties included in the events listed above.
 
 
 ### Order Properties
-
  
 | Property Name                | Description                                                           | Property Type |
 |------------------------------|-----------------------------------------------------------------------|---------------|
@@ -196,8 +197,8 @@ The table below list the properties included in the events listed above.
 | `tax`                        | The amount of tax on the order                                        | Number        |       
 | `total`                      | Revenue with discounts and coupons added                              | Number        |      
 
-### Customer Properties
 
+### Customer Properties
 
 | Property Name                      | Description                                                                                                                                                                          |
 |------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
