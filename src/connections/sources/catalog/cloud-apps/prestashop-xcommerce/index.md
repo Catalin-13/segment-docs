@@ -3,7 +3,7 @@ Prestashop to Segment Tracking by Xcommerce - Source
 ---
 
 
-[Segment Tracking](https:xcommerce.eu/segment provides self-serve predictive analytics for growth marketers, leveraging machine learning to automate audience insights and recommendations.
+[Segment Tracking](https:xcommerce.eu/segment) provides self-serve predictive analytics for growth marketers, leveraging machine learning to automate audience insights and recommendations.
 
 This is an [Event Cloud Source](/docs/sources/#event-cloud-sources) which can not only export data into your Segment warehouse, but can also federate the exported data into your other enabled Segment Destinations.
 
