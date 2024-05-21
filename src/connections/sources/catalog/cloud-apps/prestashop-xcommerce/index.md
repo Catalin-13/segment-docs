@@ -9,7 +9,7 @@ This is an [Event Cloud Source](/docs/sources/#event-cloud-sources) which can no
 
 > (delete after reading) Update your company name and support email address.
 
-This source is maintained by Prestashop - Segment Tracking by Xcommerce. For any issues with the source, [contact their Support team](mailto:support@<integration_name>.com).
+This source is maintained by Prestashop to Segment Tracking by Xcommerce. For any issues with the source, [contact their Support team](mailto:info@xcommerce.eu).
 
 ## Installation
 
