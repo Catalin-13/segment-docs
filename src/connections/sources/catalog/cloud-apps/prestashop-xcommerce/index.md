@@ -12,13 +12,13 @@ This source is maintained by Prestashop to Segment Tracking by Xcommerce. For an
 
 ## Getting started
 
-1. From your workspace's [Sources catalog page](https://app.segment.com/goto-my-workspace/sources/catalog){:target="_blank”} click ***Add Source***.
+1. From your workspace's [Sources catalog page](https://app.segment.com/goto-my-workspace/sources/catalog) click ***Add Source***.
 2. Search for "Prestashop (by Xcommerce)" in the Sources Catalog, select "Prestashop (by Xcommerce)", and click ***Add Source***.
 3. On the next screen, give the Source a name configure any other settings.
    - The name is used as a label in the Segment app, and Segment creates a related schema name in your warehouse. The name can be anything, but we recommend using something that reflects the source itself and distinguishes amongst your environments (eg. SourceName_Prod, SourceName_Staging, SourceName_Dev).
 4. Click ***Add Source*** to save your settings.
 5. Copy the Write key from the Segment UI.
-6. Log in to your Prestashop Admin Panel, go to "Prestashop (by Xcommerce)" Module Settings, and paste the API Key in the Settings tab (as described in the Configuration section) ***To check phrasing***
+6. Log in to your Prestashop Backoffice, go to "Prestashop (by Xcommerce)" Module Settings, and paste the API Key in the Settings tab, as described in the [Configuration section](#Configuration)
 
 
 ## Installation
