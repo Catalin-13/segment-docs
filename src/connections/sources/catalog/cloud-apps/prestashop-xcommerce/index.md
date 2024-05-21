@@ -1,10 +1,9 @@
 ---
-title: Prestashop - Segment Tracking by Xcommerce Source
+Prestashop to Segment Tracking by Xcommerce - Source
 ---
 
-> (delete after reading) Include a 1-2 sentence introduction to your company and the value it provides to customers - updating the name and hyperlink. Please leave the utm string unchanged.
 
-[<Segment Tracking>](https://yourintegration.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners){:target="_blank”} provides self-serve predictive analytics for growth marketers, leveraging machine learning to automate audience insights and recommendations.
+[<Segment Tracking>](https:xcommerce.eu/segment provides self-serve predictive analytics for growth marketers, leveraging machine learning to automate audience insights and recommendations.
 
 This is an [Event Cloud Source](/docs/sources/#event-cloud-sources) which can not only export data into your Segment warehouse, but can also federate the exported data into your other enabled Segment Destinations.
 
@@ -78,12 +77,12 @@ This source is maintained by Prestashop - Segment Tracking by Xcommerce. For any
 > (delete after reading) Include clear, succinct steps including hyperlinks to where customers can locate the place in your app to enter their Segment writekey.
 
 1. From your workspace's [Sources catalog page](https://app.segment.com/goto-my-workspace/sources/catalog){:target="_blank”} click ***Add Source***.
-2. Search for "Prestashop - Segment Tracking by Xcommerce" in the Sources Catalog, select Prestashop - Segment Tracking by Xcommerce, and click ***Add Source***.
+2. Search for "Prestashop (by Xcommerce)" in the Sources Catalog, select "Prestashop (by Xcommerce)", and click ***Add Source***.
 3. On the next screen, give the Source a name configure any other settings.
    - The name is used as a label in the Segment app, and Segment creates a related schema name in your warehouse. The name can be anything, but we recommend using something that reflects the source itself and distinguishes amongst your environments (eg. SourceName_Prod, SourceName_Staging, SourceName_Dev).
 4. Click ***Add Source*** to save your settings.
 5. Copy the Write key from the Segment UI.
-6. Log in to your Prestashop Admin Panel, go to "Prestashop - Segment Tracking by Xcommerce" Module Settings, and paste the API Key in the Settings tab (as described in the Configuration section) ***To check phrasing***
+6. Log in to your Prestashop Admin Panel, go to "Prestashop (by Xcommerce)" Module Settings, and paste the API Key in the Settings tab (as described in the Configuration section) ***To check phrasing***
 
 ## Stream
 
@@ -180,7 +179,7 @@ The table below list the properties included in the events listed above.
 ### Order Properties
 
 ***Questions***
-1. Only mention Order Completed properties or Checkout specific properties and product specific? 
+1. Only mention Order Completed properties or Checkout specific properties and Product specific? 
  
 | Property Name                | Description                                                           | Property Type |
 |------------------------------|-----------------------------------------------------------------------|---------------|
@@ -205,19 +204,30 @@ The table below list the properties included in the events listed above.
 | `tax`                        | The amount of tax on the order                                        | Number        |       
 | `total`                      | Revenue with discounts and coupons added                              | Number        |      
 
-### Customer Properties ***TO DO***
+### Customer Properties
  
-| Property Name                      | Description                                                       |
-|------------------------------------|-------------------------------------------------------------------|
-| `email`                            | Prestashop email address, or email submitted on a storefront form |
-| `lifetime_revenue_xcommerce `      | User lifetime value                                               |
-| `prestashop_customer_id_xcommerce` | Prestashops's identifier for the customer                         |
-| `userConsent.analytics`            | User accepted or not analytics tracking                           |
-| `userConsent.preferences`          | User has preferences for tracking                                 |
-| `userConsent.sale_of_data`         | User has preferences for tracking                                 |
-| `userId`                           | Prestashop customer ID                                            |
+***Questions***
+1. We may want to mention the email at least in Identify if not among the user traits?
+2. See lifetime_revenue_xcommerce in the table below
+3. See prestashop_customer_id_xcommerce in the table below!
 
-### All Properties - ***To be discussed!***
+
+
+| Property Name                      | Description                                                                                                                                                                          |
+|------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `birthday`                         | User birthday                                                                                                                                                                        |
+| `created_at`                       | The date the account was created                                                                                                                                                     |
+| `customer_lifetime_value`          | The total amount paid on orders by the customer                                                                                                                                      |
+| `lifetime_revenue_xcommerce`       | ***This is mentioned in the documentation and used on order events, but not mentioned on Login event. It seems to be replaced by 'customer_lifetime_value', which one do we keep?*** |
+| `first_name`                       | User name                                                                                                                                                                            |
+| `gender`                           | The gender of the user                                                                                                                                                               |
+| `last_name`                        | User last name                                                                                                                                                                       |
+| `last_order_date`                  | The date of the las order made on the user account                                                                                                                                   |
+| `purchase_count`                   | The date of the last order placed on the user account                                                                                                                                |
+| `prestashop_customer_id_xcommerce` | Prestashops's identifier for the customer ***This has been removed, should we keep it?***                                                                                            |                                                                                                                                 |
+| `userId`                           | Prestashop customer ID                                                                                                                                                               |
+
+### Other - ***To be discussed!***
 
 | Property Name                      | Description                                                       |
 |------------------------------------|-------------------------------------------------------------------|
