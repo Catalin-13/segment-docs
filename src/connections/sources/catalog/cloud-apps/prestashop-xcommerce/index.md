@@ -7,8 +7,6 @@ Prestashop to Segment Tracking by Xcommerce - Source
 
 This is an [Event Cloud Source](/docs/sources/#event-cloud-sources) which can not only export data into your Segment warehouse, but can also federate the exported data into your other enabled Segment Destinations.
 
-> (delete after reading) Update your company name and support email address.
-
 This source is maintained by Prestashop to Segment Tracking by Xcommerce. For any issues with the source, [contact their Support team](mailto:info@xcommerce.eu).
 
 ## Installation
