@@ -74,7 +74,6 @@ This source is maintained by Prestashop to Segment Tracking by Xcommerce. For an
 
 ## Getting started (***Maybe moved above instalation***)
 
-> (delete after reading) Include clear, succinct steps including hyperlinks to where customers can locate the place in your app to enter their Segment writekey.
 
 1. From your workspace's [Sources catalog page](https://app.segment.com/goto-my-workspace/sources/catalog){:target="_blank”} click ***Add Source***.
 2. Search for "Prestashop (by Xcommerce)" in the Sources Catalog, select "Prestashop (by Xcommerce)", and click ***Add Source***.
@@ -86,15 +85,12 @@ This source is maintained by Prestashop to Segment Tracking by Xcommerce. For an
 
 ## Stream
 
-> (delete after reading) Clarify the type of Segment events your integration will send. 
 
 Prestashop - Segment Tracking by Xcommerce uses our stream Source component to send Segment event data. It uses a server-side (select from `track`, `identify`, `page`, `group`) ***We need to clarify and mention which methods are used for Server Side*** method(s) to send data to Segment. These events are then available in any destination that accepts server-side events, and available in a schema in your data warehouse, so you can query using SQL.
 
-> (delete after reading) Clarify how your integration includes user identifiers in your event payloads, the example below is from Klaviyo:
 
 The default behavior is for Klaviyo (***Klaviyo is a data analytics driven marketing platform https://www.klaviyo.com/about It seems that this is an informative note of how Klaviyo is expecting data***) to pass the userId associated with the email recipient as the userId. There are cases in which Klaviyo does not have an associated userId, in which case the email address will be passed in as the anonymousId.
 
-> (delete after reading) For each of the below sections, populate the event and properties that a customer would expect to receive in their downstream tools from your Event Source.
 
 ## Events
 
@@ -178,8 +174,6 @@ The table below list the properties included in the events listed above.
 
 ### Order Properties
 
-***Questions***
-1. Only mention Order Completed properties or Checkout specific properties and Product specific? 
  
 | Property Name                | Description                                                           | Property Type |
 |------------------------------|-----------------------------------------------------------------------|---------------|
@@ -205,12 +199,6 @@ The table below list the properties included in the events listed above.
 | `total`                      | Revenue with discounts and coupons added                              | Number        |      
 
 ### Customer Properties
- 
-***Questions***
-1. We may want to mention the email at least in Identify if not among the user traits?
-2. See lifetime_revenue_xcommerce in the table below
-3. See prestashop_customer_id_xcommerce in the table below!
-
 
 
 | Property Name                      | Description                                                                                                                                                                          |
@@ -227,7 +215,7 @@ The table below list the properties included in the events listed above.
 | `prestashop_customer_id_xcommerce` | Prestashops's identifier for the customer ***This has been removed, should we keep it?***                                                                                            |                                                                                                                                 |
 | `userId`                           | Prestashop customer ID                                                                                                                                                               |
 
-### Other - ***To be discussed!***
+### Other
 
 | Property Name                      | Description                                                       |
 |------------------------------------|-------------------------------------------------------------------|
@@ -316,4 +304,3 @@ Log into your downstream tools and check to see that your events appear as expec
 
 If there are any issues with how the events are arriving to Segment, [contact the Prestashop - Segment Tracking by Xcommerce support team](mailto:support@<integration_name>.com).
 
-> (delete after reading) Congratulations! 🎉 You’ve finished the documentation for your Segment integration. If there’s any additional information or nuance which did not fit in the above template and that you want to share with our mutual customers, feel free to include these as a separate section for us to review. If not, you may now submit this doc to our team.
