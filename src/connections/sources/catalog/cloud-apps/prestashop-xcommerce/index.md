@@ -86,7 +86,7 @@ This source is maintained by Prestashop to Segment Tracking by Xcommerce. For an
       2. Product Search Autocomplete
       3. Product Search
       4. List Brands
-      5. Product (Quick) viewed
+      5. Product (Quick) Viewed
    2. Track Checkout
       1. Cart Viewed
       2. Cart Product Added
@@ -187,27 +187,29 @@ The table below list the properties included in the events listed above.
 
 ### Product Properties
 
-| Property Name                      | Description                                                       | Property Type |
-|------------------------------------|-------------------------------------------------------------------|---------------|
-| `brand`                            | The brand of the product                                          | String        |
-| `compare_at_price`                 | The product price before any discount                             | Number        |
-| `category`                         | The category of the product                                       | String        |
-| `currency`                         | Currency code associated with the transaction                     | String        |
-| `image_url`                        | The URL of the first product image                                | String        |
-| `name`                             | The product name                                                  | String        |
-| `position`                         | The product position in the collection                            | Integer       |
-| `presentment_amount`               | The product price as displayed to the user                        | Number        |
-| `presentment_currency`             | The currency displayed to the user                                | String        |
-| `prestashop_product_id`            | Prestashop Product ID                                             | String        |
-| `prestashop_variant_id`            | Prestashop Product Variant ID                                     | String        |
-| `price`                            | The product price at the time of the event, in the store currency | Number        |
-| `product_id`                       | The Prestashop Product ID                                         | String        |
-| `products`                         | Products displayed in the product list                            | Array         |
-| `quantity`                         | The quantity of products                                          | Integer       |
-| `sku`                              | The product SKU                                                   | String        |
-| `tags`                             | The product tags                                                  | String        |
-| `url`                              | The URL of the product page                                       | String        |
-| `variant`                          | The product variant name                                          | String        |
+| Property Name           | Description                                                       | Property Type |
+|-------------------------|-------------------------------------------------------------------|---------------|
+| `brand`                 | The brand of the product                                          | String        |
+| `compare_at_price`      | The product price before any discount                             | Number        |
+| `category`              | The category of the product (in default language)                 | String        |
+| `category_localized`    | The category of the product (in selected Storefront language)     | String        |
+| `currency`              | Currency code associated with the transaction                     | String        |
+| `image_url`             | The URL of the first product image                                | String        |
+| `name`                  | The product name (in default language)                            | String        |
+| `name_localized`        | The product name (in selected Storefront language)                | String        |
+| `position`              | The product position in the collection                            | Integer       |
+| `presentment_amount`    | The product price as displayed to the user                        | Number        |
+| `presentment_currency`  | The currency displayed to the user                                | String        |
+| `prestashop_product_id` | Prestashop Product ID                                             | String        |
+| `prestashop_variant_id` | Prestashop Product Variant ID                                     | String        |
+| `price`                 | The product price at the time of the event, in the store currency | Number        |
+| `product_id`            | The Prestashop Product ID                                         | String        |
+| `products`              | Products displayed in the product list                            | Array         |
+| `quantity`              | The quantity of products                                          | Integer       |
+| `sku`                   | The product SKU                                                   | String        |
+| `tags`                  | The product tags                                                  | String        |
+| `url`                   | The URL of the product page                                       | String        |
+| `variant`               | The product variant name                                          | String        |
 
 
 ### Order Properties
