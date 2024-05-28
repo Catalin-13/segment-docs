@@ -67,16 +67,17 @@ This source is maintained by Prestashop to Segment Tracking by Xcommerce. For an
     ![Customer Setting tab.](Images/CustomerSettingsTab.png)
     Here you will find two settings: "Customer traits included in:" and "Customer Id value"
 
-   - Customer traits included in:
-     - Identify - This option will trigger a separate identify event along with the Customer Login, Customer Register, Consent Updated and Customer Updated events. This Event will contain the Customer specific properties. 
-     - Track context traits - No Identify event will be triggered. Instead, the Customer specific properties will be included in all the Events. The properties will pe present in the "context" array.
-     - Track context properties - No Identify event will be triggered. Instead, the Customer specific properties will be included in all the Events. The properties will pe present in the "properties" array.
+   - Send customer traits in:
+     - Identify Only - This option will trigger a separate Identify event along with the Customer Login, Customer Register, Consent Updated and Customer Updated events. This Event will contain the Customer specific properties. 
+     - Identify and context traits - This option will trigger a separate Identify event along with the specific Customer Events. Also, the Customer specific properties will be included in all the Tracking Events. The customer properties will pe present in the "context" -> "traits" array.
+     - Identify and properties - This option will trigger a separate Identify event along with the specific Customer Events. Also, the Customer specific properties will be included in all the Tracking Events. The customer properties will pe present in the "properties" array.
+     - Context traits only - No Identify event will be triggered. Instead, the Customer specific properties will be included in all the Events. The customer properties will pe present in the "context" -> "traits" array.
+     - Properties only - No Identify event will be triggered. Instead, the Customer specific properties will be included in all the Events. The properties will pe present in the "properties" array.
      
-   - Customer ID value
+   - Segment user ID
      - Default user id - Use the Prestashop user ID as the Customer ID value
      - Custom user id - You can specify a certain field from the Database ***(id_customer needs to be mentioned in the used table if a different table than ps_customer is used)***
      - Email dash - Use the email hash of the customer as the Customer ID value. You can also add a Prefix and a Suffix to the email hash.
-     - Do not use user id - Use an anonymous ID as the Customer ID value
 
     > **Note**: Make sure to click Save after you are satisfied with the configurations.
      
@@ -177,6 +178,7 @@ Cloud-mode handles events that have data stored or calculated in the Database. T
 | Order Cancelled              | Follows the successful changing of the Order Status to "Canceled" from Backoffice                    |     
 | Order Updated                | Follows the successful update of the Order from Backoffice (status changes or order details changes) |     
 
+   > **Note**: The list of products included in the Cart or on the Order is ***limited to 30 products***. Only the fists products will be mentioned. The purpose for this limitation is to make sure the calls to Segment are smalled than 35KB (Segment Limitation)
 
 ## Event Properties
 
