@@ -82,37 +82,36 @@ This source is maintained by Prestashop to Segment Tracking by Xcommerce. For an
      
 6. The rest of the tabs can be used to enable or disable the triggers for teh Events tracked by Segment Tracking. There are 4 tabs, one for each category of events. Use these tabs to select which event you want Segment Tracking to track.
    1. Track Products
-      1. Product List
-      2. Product Search Autocomplete
-      3. Product Search
-      4. List Brands
-      5. Product (Quick) Viewed
+      1. Product List Viewed
+      2. Search Autosuggest Completed
+      3. Products Searched
+      4. Products Brand List Viewed
+      5. Product Viewed
    2. Track Checkout
       1. Cart Viewed
-      2. Cart Product Added
-      3. Cart Product Quantity Updated
-      4. Cart Product Removed
+      2. Product Added
+      3. Product Quantity Updated
+      4. Product Removed
       5. Checkout Started
       6. Checkout Step Viewed
-      7. Thank you page
+      7. Thankyou Page Viewed
    3. Track Order
       1. Order Completed
       2. Order Refunded
       3. Order Cancelled
       4. Order Status Changed
-      5. Product Add - Backoffice
-      6. Product Remove - Backoffice
-      7. Discount Add - Backoffice
-      8. Discount Remove - Backoffice
-      9. Payment - Backoffice
+      5. Product Added - Backoffice
+      6. Product Removed - Backoffice
+      7. Discount Added - Backoffice
+      8. Discount Removed - Backoffice
+      9. Payment Added - Backoffice
    4. Track Customer
-      1. Customer Register
-      2. Customer Login
-      3. Customer Logout
-      4. Reset Anonymous Id
+      1. Customer Registered
+      2. Customer Logged In
+      3. Customer Logged Out
       5. Customer Updated
-      6. Customer Create - Backoffice
-      7. Customer Update - Backoffice
+      6. Customer Created - Backoffice
+      7. Customer Updated - Backoffice
 
 
 ## Stream
@@ -146,38 +145,37 @@ The following traits are included with an Identify call:
 | `last_order_date`         | The date of the las order made on the user account    | Date          |
 | `purchase_count`          | The date of the last order placed on the user account | Integer       |
 | `userId`                  | The customer ID as set on Customer Settings           | String        |
-| `source'                  | The action that triggered the event                   | String        |
+| `source`                  | The action that triggered the event                   | String        |
 
 
 ### Cloud-mode events (server side)
 
 Cloud-mode handles events that have data stored or calculated in the Database. These events send data that is not necessarily available to the User in the browser. This method can capture information that would otherwise be inaccessible due to add block, for example.
 
-| Event Name                    | Description                                                                                          |
-|-------------------------------|------------------------------------------------------------------------------------------------------|
-| Customer Consent Update       | Follows updates to the User Consent                                                                  |     
-| Customer Register             | Follows the submission of the Customer Register form                                                 |     
-| Customer Created              | Follows the successful creation of a customer in Backoffice                                          |     
-| Customer Login                | Follows the successful Customer Login events                                                         |     
-| Customer Logout               | Follows the successful Customer Logout events                                                        |     
-| Customer Updated              | Follows updates to a Customer Account                                                                |     
-| Product Viewed                | Follows the successful loading of Product Detail Pages                                               |     
-| Product Quick Viewed          | Follows the viewing of Product Quick View pop-up                                                     |     
-| Product List Viewed           | Follows the displaying of Product Lists                                                              |     
-| Product List Filtered         | Follows the applying of Filters on Product Lists                                                     |    
-| Product Searched              | Follows the loading of Product Searches Results pages                                                |     
-| Product Searched Autocomplete | Follows the population of Search Autocomplete lists                                                  |     
-| Product Added                 | Follows the successful adding of products to cart                                                    |     
-| Product Quantity Updated      | Follows the product quantity updated on Cart Page                                                    |     
-| Product Removed               | Follows the removal of products from Cart page                                                       |     
-| Cart Viewed                   | Follows the successful loading of the Cart Page                                                      |     
-| Checkout Started              | Follows the successful loading of the first Checkout Step ***to be clarified***                      |     
-| Checkout Step Viewed          | Follows the successful loading of subsequent Checkout Steps                                          |     
-| Thank You Page Viewed         | Follows the successful loading of Thank You Pages after placing an order                             |     
-| Order Completed               | Follows the successful placing of an Order (from Storefront or Backoffice)                           |     
-| Order Cancelled               | Follows the successful changing of the Order Status to "Canceled" from Backoffice                    |     
-| Order Refunded                | Follows the successful changing of the Order Status to "Refunded" from Backoffice                    |     
-| Order Updated                 | Follows the successful update of the Order from Backoffice (status changes or order details changes) |     
+| Event Name                   | Description                                                                                          |
+|------------------------------|------------------------------------------------------------------------------------------------------|
+| Customer Consent Update      | Follows updates to the User Consent                                                                  |     
+| Customer Registered          | Follows the submission of the Customer Register form                                                 |     
+| Customer Created             | Follows the successful creation of a customer in Backoffice                                          |     
+| Customer Logged In           | Follows the successful Customer Login events                                                         |     
+| Customer Logged Out          | Follows the successful Customer Logout events                                                        |     
+| Customer Updated             | Follows updates to a Customer Account                                                                |     
+| Product Viewed               | Follows the successful loading of Product Detail Pages                                               |     
+| Product List Viewed          | Follows the displaying of Product Lists                                                              |     
+| Product List Filtered        | Follows the applying of Filters on Product Lists                                                     |    
+| Products Searched            | Follows the loading of Product Searches Results pages                                                |     
+| Search Autosuggest Completed | Follows the population of Search Autocomplete lists                                                  |     
+| Product Added                | Follows the successful adding of products to cart                                                    |     
+| Product Quantity Updated     | Follows the product quantity updated on Cart Page                                                    |     
+| Product Removed              | Follows the removal of products from Cart page                                                       |     
+| Cart Viewed                  | Follows the successful loading of the Cart Page                                                      |     
+| Checkout Started             | Follows the successful loading of the first Checkout Step ***to be clarified***                      |     
+| Checkout Step Viewed         | Follows the successful loading of subsequent Checkout Steps                                          |     
+| Thankyou Page Viewed         | Follows the successful loading of Thank You Pages after placing an order                             |     
+| Order Completed              | Follows the successful placing of an Order (from Storefront or Backoffice)                           |     
+| Order Refunded               | Follows the successful changing of the Order Status to "Refunded" from Backoffice                    |     
+| Order Cancelled              | Follows the successful changing of the Order Status to "Canceled" from Backoffice                    |     
+| Order Updated                | Follows the successful update of the Order from Backoffice (status changes or order details changes) |     
 
 
 ## Event Properties
@@ -239,20 +237,20 @@ The table below list the properties included in the events listed above.
 
 ### Customer Properties
 
-| Property Name                 | Description                                            | Property Type |
-|-------------------------------|--------------------------------------------------------|---------------|
-| `birthday`                    | The customer's birthday.                               | Date          |
-| `createdAt`                   | The date the customer record was created.              | Date          |
-| `customer_lifetime_value`     | The total spend by the customer on the store.          | Number        |
-| `email`                       | The customer's email address                           | String        |
-| `first_name`                  | User name                                              | String        |
-| `gender`                      | The gender of the user                                 | String        |
-| `last_name`                   | User last name                                         | String        |
-| `last_order_date`             | The date of the las order made on the user account     | Date          |
-| `lifetime_revenue_xcommerce`  | User lifetime revenue                                  | Number        |
-| `purchase_count`              | The date of the last order placed on the user account  | Integer       |
-| `userId`                      | The customer ID as set on Customer Settings            | String        |
-| `source'                      | The action that triggered the event                    | String        |                                                                  |
+| Property Name                | Description                                            | Property Type |
+|------------------------------|--------------------------------------------------------|---------------|
+| `birthday`                   | The customer's birthday.                               | Date          |
+| `createdAt`                  | The date the customer record was created.              | Date          |
+| `customer_lifetime_value`    | The total spend by the customer on the store.          | Number        |
+| `email`                      | The customer's email address                           | String        |
+| `first_name`                 | User name                                              | String        |
+| `gender`                     | The gender of the user                                 | String        |
+| `last_name`                  | User last name                                         | String        |
+| `last_order_date`            | The date of the las order made on the user account     | Date          |
+| `lifetime_revenue_xcommerce` | User lifetime revenue                                  | Number        |
+| `purchase_count`             | The date of the last order placed on the user account  | Integer       |
+| `userId`                     | The customer ID as set on Customer Settings            | String        |
+| `source`                     | The action that triggered the event                    | String        |                                                                  |
 
 
 ### Other Properties
