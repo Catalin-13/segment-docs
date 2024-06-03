@@ -82,6 +82,7 @@ This source is maintained by Prestashop to Segment Tracking by Xcommerce. For an
     > **Note**: Make sure to click Save after you are satisfied with the configurations.
      
 6. The rest of the tabs can be used to enable or disable the triggers for teh Events tracked by Segment Tracking. There are 4 tabs, one for each category of events. Use these tabs to select which event you want Segment Tracking to track.
+    ***Here we could mention in parentheses the field description***
    1. Track Products
       1. Product List Viewed
       2. Search Autosuggest Completed
@@ -136,16 +137,25 @@ The following traits are included with an Identify call:
 
 | Property Name             | Description                                           | Property Type |
 |---------------------------|-------------------------------------------------------|---------------|
-| `birthday`                | The customer's birthday.                              | Date          |
-| `createdAt`               | The date the customer record was created.             | Date          |
-| `customer_lifetime_value` | The total spend by the customer on the store.         | Number        |
+| `billing_address`         | The customer's billing address                        | String        |
+| `billing_city`            | The customer's billing city                           | String        |
+| `billing_country`         | The customer's billing country                        | String        |
+| `billing_postal_code`     | The customer's billing postal code                    | String        |
+| `birthday`                | The customer's birthday                               | Date          |
+| `createdAt`               | The date the customer record was created              | Date          |
+| `customer_lifetime_value` | The total spend by the customer on the store          | Number        |
 | `email`                   | The customer's email address                          | String        |
 | `first_name`              | User name                                             | String        |
 | `gender`                  | The gender of the user                                | String        |
 | `last_name`               | User last name                                        | String        |
 | `last_order_date`         | The date of the las order made on the user account    | Date          |
+| `phone`                   | The Phone number of the customer                      | String        |
 | `purchase_count`          | The date of the last order placed on the user account | Integer       |
 | `userId`                  | The customer ID as set on Customer Settings           | String        |
+| `shipping_address`        | The customer's shipping address                       | String        |
+| `shipping_city`           | The customer's shipping city                          | String        |
+| `shipping_country`        | The customer's shipping country                       | String        |
+| `shipping_postal_code`    | The customer's shipping postal code                   | String        |
 | `source`                  | The action that triggered the event                   | String        |
 
 
@@ -190,9 +200,9 @@ The table below list the properties included in the events listed above.
 | Property Name           | Description                                                       | Property Type |
 |-------------------------|-------------------------------------------------------------------|---------------|
 | `brand`                 | The brand of the product                                          | String        |
-| `compare_at_price`      | The product price before any discount                             | Number        |
 | `category`              | The category of the product (in default language)                 | String        |
 | `category_localized`    | The category of the product (in selected Storefront language)     | String        |
+| `compare_at_price`      | The product price before any discount                             | Number        |
 | `currency`              | Currency code associated with the transaction                     | String        |
 | `image_url`             | The URL of the first product image                                | String        |
 | `name`                  | The product name (in default language)                            | String        |
@@ -203,8 +213,9 @@ The table below list the properties included in the events listed above.
 | `prestashop_product_id` | Prestashop Product ID                                             | String        |
 | `prestashop_variant_id` | Prestashop Product Variant ID                                     | String        |
 | `price`                 | The product price at the time of the event, in the store currency | Number        |
-| `product_id`            | The Prestashop Product ID                                         | String        |
-| `products`              | Products displayed in the product list                            | Array         |
+| `product_id`            | The prestashop Product ID                                         | String        |
+| `products`              | The products displayed in the product list                        | Array         |
+| `products_in_cart`      | The products contained in the shopping cart                       | Array         |
 | `quantity`              | The quantity of products                                          | Integer       |
 | `sku`                   | The product SKU                                                   | String        |
 | `tags`                  | The product tags                                                  | String        |
@@ -214,60 +225,66 @@ The table below list the properties included in the events listed above.
 
 ### Order Properties
  
-| Property Name                | Description                                                           | Property Type |
-|------------------------------|-----------------------------------------------------------------------|---------------|
-| `cart_id`                    | The ID of the Prestashop cart                                         | String        | 
-| `coupon`                     | Coupon id and name associated with the product ***or transaction??*** | String        |
-| `currency`                   | Currency code associated with the transaction                         | String        |
-| `discount`                   | The discounted amount                                                 | Number        | 
-| `event_category`             | The category of the events, as set in Backoffice                      | String        |       
-| `order_id`                   | The ID of the order                                                   | String        |      
-| `payment_gateway_xcommerce`  | The payment gateway used by the customer                              | String        |     
-| `presentment_amount`         | The product price as displayed to the user                            | Number        |    
-| `presentment_currency`       | The currency displayed to the user                                    | String        |   
-| `purchase_count_xcommerce`   | Total purchase count for the customer                                 | Integer       |  
-| `revenue`                    | Revenue ($) associated with the transaction                           | Number        |      
-| `shipping`                   | The shipping cost                                                     | Number        |      
-| `shipping_gateway_xcommerce` | The shipping method chosen for checkout                               | String        |     
-| `source_name`                | The source of the order or checkout (e.g. web, android, pos)          | String        |    
-| `source`                     | The reason of the trigger                                             | String        |   
-| `step`                       | The checkout step number                                              | Integer       |  
-| `subtotal`                   | Order total after discounts but before taxes and shipping             | Number        | 
-| `tax`                        | The amount of tax on the order                                        | Number        |       
-| `total`                      | Revenue with discounts and coupons added                              | Number        |      
+| Property Name                | Description                                                            | Property Type |
+|------------------------------|------------------------------------------------------------------------|---------------|
+| `cart_id`                    | The ID of the Prestashop cart                                          | String        | 
+| `coupon`                     | Coupon id and name associated with the product ***or transaction??***  | String        |
+| `currency`                   | Currency code associated with the transaction                          | String        |
+| `discount`                   | The discounted amount                                                  | Number        | 
+| `event_category`             | The category of the events, as set in Backoffice                       | String        |       
+| `order_id`                   | The ID of the order                                                    | String        |      
+| `payment_gateway_xcommerce`  | The payment gateway used by the customer                               | String        |     
+| `presentment_amount`         | The products price as displayed to the user                            | Number        |    
+| `presentment_currency`       | The currency displayed to the user                                     | String        |   
+| `presentment_total`          | The order price as displayed to the user (including the shipping cost) |               |
+| `revenue`                    | Revenue ($) associated with the transaction                            | Number        |      
+| `shipping`                   | The shipping cost                                                      | Number        |      
+| `shipping_gateway_xcommerce` | The shipping method chosen for checkout                                | String        |     
+| `step`                       | The checkout step number                                               | Integer       |  
+| `subtotal`                   | Order total after discounts but before taxes and shipping              | Number        | 
+| `tax`                        | The amount of tax on the order                                         | Number        |       
+| `total`                      | Revenue with discounts and coupons added                               | Number        |      
 
 
 ### Customer Properties
 
-| Property Name                | Description                                            | Property Type |
-|------------------------------|--------------------------------------------------------|---------------|
-| `birthday`                   | The customer's birthday.                               | Date          |
-| `createdAt`                  | The date the customer record was created.              | Date          |
-| `customer_lifetime_value`    | The total spend by the customer on the store.          | Number        |
-| `email`                      | The customer's email address                           | String        |
-| `first_name`                 | User name                                              | String        |
-| `gender`                     | The gender of the user                                 | String        |
-| `last_name`                  | User last name                                         | String        |
-| `last_order_date`            | The date of the las order made on the user account     | Date          |
-| `lifetime_revenue_xcommerce` | User lifetime revenue                                  | Number        |
-| `purchase_count`             | The date of the last order placed on the user account  | Integer       |
-| `userId`                     | The customer ID as set on Customer Settings            | String        |
-| `source`                     | The action that triggered the event                    | String        |                                                                  |
+| Property Name          | Description                                        | Property Type |
+|------------------------|----------------------------------------------------|---------------|
+| `billing_address`      | The customer's billing address                     | String        |
+| `billing_city`         | The customer's billing city                        | String        |
+| `billing_country`      | The customer's billing country                     | String        |
+| `billing_postal_code`  | The customer's billing postal code                 | String        |
+| `birthday`             | The customer's birthday.                           | Date          |
+| `createdAt`            | The date the customer record was created.          | Date          |
+| `email`                | The customer's email address                       | String        |
+| `first_name`           | User name                                          | String        |
+| `gender`               | The gender of the user                             | String        |
+| `last_name`            | User last name                                     | String        |
+| `last_order_date`      | The date of the las order made on the user account | Date          |
+| `phone`                | The Phone number of the customer                   | String        |
+| `shipping_address`     | The customer's shipping address                    | String        |
+| `shipping_city`        | The customer's shipping city                       | String        |
+| `shipping_country`     | The customer's shipping country                    | String        |
+| `shipping_postal_code` | The customer's shipping postal code                | String        |
+| `userId`               | The customer ID as set on Customer Settings        | String        |
 
 
 ### Other Properties
 
-| Property Name               | Description                                                  | Property Type |
-|-----------------------------|--------------------------------------------------------------|---------------|
-| `event_category`            | Event category (defaults to Prestashop(Xcommerce))           | String        |
-| `list_id`                   | Product list being viewed                                    | String        |
-| `results`                   | Number of products matching the search                       | Integer       |
-| `sent_from`                 | Xcommerce source identifier                                  | String        |
-| `source_name`               | The source of the order or checkout (e.g. web, android, pos) | String        |
-| `marketing`                 | User accepted or not marketing tracking                      | Boolean       |
-| `necessary`                 | User accepted or not necessary tracking                      | Boolean       |
-| `preferences`               | User accepted or not preferences tracking                    | Boolean       |
-| `statistics`                | User accepted or not statistics tracking                     | Boolean       |
+| Property Name    | Description                                                  | Property Type |
+|------------------|--------------------------------------------------------------|---------------|
+| `event_category` | Event category (defaults to Prestashop(Xcommerce))           | String        |
+| `list_id`        | Product list being viewed                                    | String        |
+| `results`        | Number of products matching the search                       | Integer       |
+| `sent_from`      | Xcommerce source identifier                                  | String        |
+| `source_name`    | The source of the order or checkout (e.g. web, android, pos) | String        |
+| `marketing`      | User accepted or not marketing tracking                      | Boolean       |
+| `necessary`      | User accepted or not necessary tracking                      | Boolean       |
+| `preferences`    | User accepted or not preferences tracking                    | Boolean       |
+| `statistics`     | User accepted or not statistics tracking                     | Boolean       |
+| `source`         | The reason of the trigger                                    | String        |   
+| `locale`         | The storefront language selected by the user                 | String        |
+| `anonymous`      | The randomly generated user ID                               | String        |
 
 
 ## Adding Destinations
