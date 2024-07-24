@@ -12,7 +12,7 @@ This source is maintained by Prestashop to Segment Tracking by Xcommerce. For an
 
 ## Getting started
 
-1. From your workspace's [Sources catalog page](https://app.segment.com/goto-my-workspace/sources/catalog) click ***Add Source***.
+1. From your workspace's [Sources catalog page](https://app.segment.com/goto-my-workspace/sources) click ***Add Source***.
 2. Search for "Prestashop (by Xcommerce)" in the Sources Catalog, select "Prestashop (by Xcommerce)", and click ***Add Source***.
 3. On the next screen, give the Source a name configure any other settings.
    - The name is used as a label in the Segment app, and Segment creates a related schema name in your warehouse. The name can be anything, but we recommend using something that reflects the source itself and distinguishes amongst your environments (eg. SourceName_Prod, SourceName_Staging, SourceName_Dev).
@@ -23,8 +23,8 @@ This source is maintained by Prestashop to Segment Tracking by Xcommerce. For an
 
 ## Installation
 
-1. Get the Xcommerce Segment Integration from Shopware Market. 
-  After the purchase, you will get a .zip file
+1. Get the Xcommerce Segment Integration from Prestashop Market. 
+   After the purchase, you will get a .zip file
 2. Go to Prestashop Admin Panel -> Improve -> Module Manager
 3. Click "Upload a module" and select the .zip file for the upload
 
@@ -44,7 +44,7 @@ This source is maintained by Prestashop to Segment Tracking by Xcommerce. For an
     This is the page where you will select the general connection and labeling options.
    - Active - Select if the Module is active and sends data to Segment
    - API Key - API key for the designated Segment Source
-   - API Host - Only needed if the host is not in the US ***More details may be needed, but could not find any in the Segment documentation (https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/custom-proxy/ https://segment.com/docs/connections/sources/catalog/libraries/server/http-api/)***
+   - API Host - Select the region of the host (US or EU)
    - Storefront Action Label - Designate a label you want to be included in the events triggered by actions performed in Storefront
    - Backoffice Action Label - Designate a label you want to be included in the events triggered by actions performed in Backoffice
    - Event Category - Designate the default event category name. This will be visible in all Events
