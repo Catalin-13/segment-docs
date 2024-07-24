@@ -67,6 +67,9 @@ This source is maintained by Prestashop to Segment Tracking by Xcommerce. For an
     ![Customer Setting tab.](Images/CustomerSettingsTab.png)
     Here you will find two settings: "Customer traits included in:" and "Customer Id value"
 
+
+   - Reset Anonymous ID: 
+     - You can select if you want the Anonymous ID to be reset after customer Log Out
    - Send customer traits in:
      - Identify Only - This option will trigger a separate Identify event along with the Customer Login, Customer Register, Consent Updated and Customer Updated events. This Event will contain the Customer specific properties. 
      - Identify and context traits - This option will trigger a separate Identify event along with the specific Customer Events. Also, the Customer specific properties will be included in all the Tracking Events. The customer properties will pe present in the "context" -> "traits" array.
